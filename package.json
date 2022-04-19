@@ -1,0 +1,28 @@
+{
+	"name": "bruhgit",
+	"version": "1.0.0",
+	"description": "",
+	"bin": {
+		"bruhgit": "bin/bruhgit",
+		"bruh": "bin/bruhgit",
+		"bgit": "bin/bruhgit"
+	},
+	"scripts": {
+		"build": "tsc"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"chalk": "^4.1.0",
+		"commander": "^9.2.0",
+		"inquirer": "^8.2.2",
+		"signale": "^1.4.0",
+		"simple-git": "^3.7.0"
+	},
+	"devDependencies": {
+		"@types/inquirer": "^8.2.1",
+		"@types/node": "^17.0.25",
+		"@types/signale": "^1.4.4"
+	}
+}
