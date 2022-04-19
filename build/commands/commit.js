@@ -73,8 +73,7 @@ exports.default = (program) => {
             }
         }
         // commit changes
-        git
-            .commit(message)
+        git.commit(message)
             .then((result) => {
             signale_1.default.success("Commit successful!\n");
             signale_1.default.info(`Changes:    ${chalk_1.default.yellow(result.summary.changes)}`);

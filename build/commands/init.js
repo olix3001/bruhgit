@@ -31,7 +31,9 @@ exports.default = (program) => {
         }
         if (options.template === "list") {
             signale_1.default.info("Available templates are:");
-            console.log(fs_1.default.readdirSync(path_1.default.join(__dirname, "init-templates")).join(", "));
+            console.log(fs_1.default
+                .readdirSync(path_1.default.join(__dirname, "init-templates"))
+                .join(", "));
             return;
         }
         if (options.template) {
@@ -47,8 +49,7 @@ exports.default = (program) => {
                 }
             }
         }
-        git
-            .init()
+        git.init()
             .then(() => {
             signale_1.default.success("Created new git repository");
         })

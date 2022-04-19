@@ -24,8 +24,7 @@ exports.default = (program) => {
             signale_1.default.error("There is no repository in current directory");
             return;
         }
-        git
-            .add(files)
+        git.add(files)
             .then((result) => {
             signale_1.default.success("File(s) added successfully");
             console.log(result);
