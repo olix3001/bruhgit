@@ -77,9 +77,11 @@ export default (program: Command) => {
                             )
                             .toString()
                             .split("\n");
-                        message =
+                        header =
                             content[Math.floor(Math.random() * content.length)];
-                        header = null;
+                        signale.info(
+                            `Your commit header is: ${chalk.blue(header)}`
+                        );
                     }
                 }
 

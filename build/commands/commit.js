@@ -71,9 +71,9 @@ exports.default = (program) => {
                         .readFileSync(path_1.default.join(__dirname, "commit_messages.txt"))
                         .toString()
                         .split("\n");
-                    message =
+                    header =
                         content[Math.floor(Math.random() * content.length)];
-                    header = null;
+                    signale_1.default.info(`Your commit header is: ${chalk_1.default.blue(header)}`);
                 }
             }
             if (header !== null) {
