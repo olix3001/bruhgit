@@ -5,6 +5,8 @@ import addAll from "../utils/addAll";
 import chalk from "chalk";
 import nameSuggestion from "../utils/nameSuggestion";
 import inquirer from "inquirer";
+import fs from "fs";
+import path from "path";
 
 export default (program: Command) => {
     program
@@ -49,7 +51,7 @@ export default (program: Command) => {
                             type: "input",
                             name: "header",
                             message:
-                                "Header for your commit ('-' to provide custom commit message or empty for no custom header)",
+                                "Header for your commit ('-' to provide custom commit message, '$' for random message or empty for no custom header)",
                         },
                     ]);
 
@@ -65,6 +67,18 @@ export default (program: Command) => {
                                 },
                             ])
                         ).message;
+                        header = null;
+                    }
+
+                    if (r.header === "$") {
+                        let content = fs
+                            .readFileSync(
+                                path.join(__dirname, "commit_messages.txt")
+                            )
+                            .toString()
+                            .split("\n");
+                        message =
+                            content[Math.floor(Math.random() * content.length)];
                         header = null;
                     }
                 }

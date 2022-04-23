@@ -18,6 +18,8 @@ const addAll_1 = __importDefault(require("../utils/addAll"));
 const chalk_1 = __importDefault(require("chalk"));
 const nameSuggestion_1 = __importDefault(require("../utils/nameSuggestion"));
 const inquirer_1 = __importDefault(require("inquirer"));
+const fs_1 = __importDefault(require("fs"));
+const path_1 = __importDefault(require("path"));
 exports.default = (program) => {
     program
         .command("commit")
@@ -50,7 +52,7 @@ exports.default = (program) => {
                     {
                         type: "input",
                         name: "header",
-                        message: "Header for your commit ('-' to provide custom commit message or empty for no custom header)",
+                        message: "Header for your commit ('-' to provide custom commit message, '$' for random message or empty for no custom header)",
                     },
                 ]);
                 header = r.header;
@@ -62,6 +64,15 @@ exports.default = (program) => {
                             message: "Message for your commit",
                         },
                     ])).message;
+                    header = null;
+                }
+                if (r.header === "$") {
+                    let content = fs_1.default
+                        .readFileSync(path_1.default.join(__dirname, "commit_messages.txt"))
+                        .toString()
+                        .split("\n");
+                    message =
+                        content[Math.floor(Math.random() * content.length)];
                     header = null;
                 }
             }
